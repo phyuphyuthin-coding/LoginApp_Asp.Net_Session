@@ -1,0 +1,44 @@
+﻿@model LoginAppWithSessionInAsp.Net.Models.ViewModels.UserViewModel;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+
+<body>
+    <form asp-action="Login" asp-controller="User" method="post">
+        <div class="form">
+            <h2>Login</h2>
+            <div style="color: white;">@ViewBag.errMsg</div>
+            <div style="color: white;">@ViewBag.msg</div>
+            <div class="input">
+                <div class="inputBox">
+                    <label>Email</label>
+                    <input asp-for="Email" type="email" placeholder="xyz@gmail.com">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="inputBox">
+                    <label>Password</label>
+                    <input asp-for="Password" type="password" placeholder="······">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="inputBox">
+                    <input type="submit" value="Login">
+                </div>
+            </div>
+            <p class="forget">Don't have an account? <a asp-action="Register" asp-controller="User">Register</a></p>
+        </div>
+    </form>
+</body>
+
+</html>
