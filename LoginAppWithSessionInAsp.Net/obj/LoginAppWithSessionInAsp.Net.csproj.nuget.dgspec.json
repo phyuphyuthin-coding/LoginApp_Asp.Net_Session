@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Learning\\Asp.Net Projects\\PhyuPhyuThin_Asp.net\\LoginAppWithSessionInAsp.Net\\LoginAppWithSessionInAsp.Net.csproj": {}
+    "D:\\slh\\proj\\LoginApp_Asp.Net_Session\\LoginAppWithSessionInAsp.Net\\LoginAppWithSessionInAsp.Net.csproj": {}
   },
   "projects": {
-    "D:\\Learning\\Asp.Net Projects\\PhyuPhyuThin_Asp.net\\LoginAppWithSessionInAsp.Net\\LoginAppWithSessionInAsp.Net.csproj": {
+    "D:\\slh\\proj\\LoginApp_Asp.Net_Session\\LoginAppWithSessionInAsp.Net\\LoginAppWithSessionInAsp.Net.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Learning\\Asp.Net Projects\\PhyuPhyuThin_Asp.net\\LoginAppWithSessionInAsp.Net\\LoginAppWithSessionInAsp.Net.csproj",
+        "projectUniqueName": "D:\\slh\\proj\\LoginApp_Asp.Net_Session\\LoginAppWithSessionInAsp.Net\\LoginAppWithSessionInAsp.Net.csproj",
         "projectName": "LoginAppWithSessionInAsp.Net",
-        "projectPath": "D:\\Learning\\Asp.Net Projects\\PhyuPhyuThin_Asp.net\\LoginAppWithSessionInAsp.Net\\LoginAppWithSessionInAsp.Net.csproj",
-        "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-        "outputPath": "D:\\Learning\\Asp.Net Projects\\PhyuPhyuThin_Asp.net\\LoginAppWithSessionInAsp.Net\\obj\\",
+        "projectPath": "D:\\slh\\proj\\LoginApp_Asp.Net_Session\\LoginAppWithSessionInAsp.Net\\LoginAppWithSessionInAsp.Net.csproj",
+        "packagesPath": "C:\\Users\\ACEBNK101\\.nuget\\packages\\",
+        "outputPath": "D:\\slh\\proj\\LoginApp_Asp.Net_Session\\LoginAppWithSessionInAsp.Net\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACEBNK101\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,7 +71,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -83,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.415\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200-preview.22628.1\\RuntimeIdentifierGraph.json"
         }
       }
     }
