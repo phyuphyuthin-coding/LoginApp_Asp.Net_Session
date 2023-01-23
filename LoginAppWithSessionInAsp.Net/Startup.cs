@@ -1,3 +1,4 @@
+using LoginAppWithSessionInAsp.Net.Hubs;
 using LoginAppWithSessionInAsp.Net.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,7 @@ namespace LoginAppWithSessionInAsp.Net
             });
 
             services.AddControllersWithViews();
+            services.AddSignalR();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(
@@ -68,7 +70,8 @@ namespace LoginAppWithSessionInAsp.Net
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=User}/{action=Login}/{id?}");
+                    pattern: "{controller=User}/{action=Index}/{id?}");
+                endpoints.MapHub<ChatHub>("/chatHub");
             });
         }
     }

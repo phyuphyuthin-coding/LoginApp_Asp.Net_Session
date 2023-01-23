@@ -1,8 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <title>@ViewData["Title"] - LoginAppWithSessionInAsp.Net</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
@@ -31,6 +35,10 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <label>@HttpContextAccessor.HttpContext.Session.GetString("userName")</label>
+            <button type="button" class="btn btn-primary">
+                Notifications <span class="badge bg-secondary" id="noti">loading...</span>
+            </button>
             @RenderBody()
         </main>
     </div>
@@ -43,6 +51,24 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script>
+        var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+        connection.on("ClientReceiveNotificationCount", function (count) {
+            console.log("ClientReceiveNotificationCount event!");
+            $('#noti').html(count);
+        });
+
+        connection.start().then(function () {
+            connection.invoke("ServerNotificationCount");
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+    </script>
+    @await RenderSectionAsync("scripts", required: false)
 </body>
 </html>

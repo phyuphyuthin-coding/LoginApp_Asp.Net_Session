@@ -30,7 +30,7 @@ namespace LoginAppWithSessionInAsp.Net.Controllers
             string message = "";
             if (userViewModel.Email == null ||
                 string.IsNullOrEmpty(userViewModel.Email) ||
-                EmailValidation.EmailValidator.Validate(userViewModel.Email))
+                !EmailValidation.EmailValidator.Validate(userViewModel.Email))
             {
                 message = "Invalid Email!";
                 goto result;
@@ -45,15 +45,16 @@ namespace LoginAppWithSessionInAsp.Net.Controllers
 
             userService.CreateUser(userViewModel);
             ViewBag.msg = "Successfully registered!";
-            return View("Login");
+            return View("Index");
         result:
             ViewBag.message = message;
             return View("Register");
         }
 
+        [ActionName("Index")]
         public IActionResult Login()
         {
-            return View();
+            return View("Login");
         }
 
         public IActionResult WelcomePage()
@@ -81,10 +82,10 @@ namespace LoginAppWithSessionInAsp.Net.Controllers
 
             //ViewBag.Name = HttpContext.Session.GetString("userName");
             //ViewBag.Email = HttpContext.Session.GetString("userEmail");
-            return RedirectToAction("WelcomePage");
+            return Redirect("/Home");
         result:
             ViewBag.errMsg = errMsg;
-            return View("Login");
+            return View("Index");
         }
     }
 }

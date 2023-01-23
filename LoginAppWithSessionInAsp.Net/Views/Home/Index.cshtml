@@ -1,4 +1,5 @@
-﻿@{
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +7,28 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@section scripts{
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script>
+        var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+        connection.on("ClientPrivateReceiveMessage", function (user, message) {
+            var li = document.createElement("li");
+            document.getElementById("messagesList").appendChild(li);
+            // We can assign user-supplied strings to an element's textContent because it
+            // is not interpreted as markup. If you're assigning in any other way, you
+            // should be aware of possible script injection concerns.
+            li.textContent = `${user} says ${message}`;
+        });
+
+        connection.start().then(function () {
+            var userName = "@(HttpContextAccessor.HttpContext.Session.GetString("userName"))";
+            connection.invoke("ServerAddConnection", userName).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+    </script>
+}

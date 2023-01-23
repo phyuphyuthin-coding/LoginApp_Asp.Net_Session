@@ -32,15 +32,17 @@ namespace LoginAppWithSessionInAsp.Net.Services
         {
             UserDataModel user = db.Users
                 .FirstOrDefault(x => x.email == email);
-            
-            bool verified = BCrypt.Net.BCrypt.Verify(password+user.email, user.password);
-            
+
+            if (user == null) return null;
+
+            bool verified = BCrypt.Net.BCrypt.Verify(password + user.email, user.password);
+
             return verified ? user : null;
         }
 
         public int CreateUser(UserViewModel userViewModel)
         {
-            string passwordHash = BCrypt.Net.BCrypt.HashPassword(userViewModel.Password+userViewModel.Email);
+            string passwordHash = BCrypt.Net.BCrypt.HashPassword(userViewModel.Password + userViewModel.Email);
             UserDataModel userDataModel = new UserDataModel
             {
                 userName = userViewModel.UserName,

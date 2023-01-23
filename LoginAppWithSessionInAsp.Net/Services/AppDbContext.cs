@@ -1,4 +1,5 @@
-﻿using LoginAppWithSessionInAsp.Net.Models.DataModels;
+﻿using LoginAppWithSessionInAsp.Net.Models;
+using LoginAppWithSessionInAsp.Net.Models.DataModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -14,24 +15,7 @@ namespace LoginAppWithSessionInAsp.Net.Services
         {
         }
 
-        //private readonly string connectionString;
-        //private readonly IConfiguration _configuration;
-
-        //public AppDbContext(IConfiguration configuration)
-        //{
-        //    _configuration = configuration;
-        //    connectionString = _configuration.GetConnectionString("DBConnection");
-        //}
-
-        //public AppDbContext()
-        //{
-        //}
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(connectionString);
-        //}
-
         public DbSet<UserDataModel> Users { get; set; }
+        public DbSet<BlogDataModel> Blogs { get; set; }
     }
 }
