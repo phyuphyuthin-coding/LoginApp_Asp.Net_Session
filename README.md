@@ -1,0 +1,16 @@
+# LoginApp_Asp.Net_Session
+
+```sql
+CREATE TABLE [dbo].[tbl_user](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[userName] [varchar](50) NOT NULL,
+	[email] [varchar](256) NOT NULL,
+	[password] [varchar](500) NOT NULL,
+ CONSTRAINT [PK__tbl_user__3213E83F209CA1BA] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+```
